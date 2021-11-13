@@ -7,7 +7,7 @@ class PomenohennApp:
         self.phenn = Pomenohenn(dictionary, min_word_length, max_word_length)
         # try counter
         self.max_tries = max_tries
-        self.tries = 0
+        self.tries_remaining = max_tries
         # ui selector
         self.current_guess = None
         self.is_selected = False
@@ -18,7 +18,8 @@ class PomenohennApp:
         self.total_questions = 0
         self.correct_questions = 0
 
-        pyxel.init(160, 120, caption="Pomenohenn")
+        pyxel.init(180, 100, caption="Pomenohenn")
+        pyxel.load("rsc.pyxres")
         pyxel.run(self.update, self.draw)
 
     def new_question(self):
@@ -28,7 +29,7 @@ class PomenohennApp:
 
         self.phenn.generate_question()
         # reset state
-        self.tries = 0
+        self.tries_remaining = self.max_tries
         self.current_guess = list(self.phenn.question)
         self.is_selected = False
         self.current_select = 0
@@ -39,7 +40,6 @@ class PomenohennApp:
         if not self.phenn.is_started():
             if pyxel.btnp(pyxel.KEY_ENTER):
                 self.new_question()
-                print(self.get_state_str())
             return
         
         if pyxel.btnp(pyxel.KEY_ENTER):
@@ -47,41 +47,33 @@ class PomenohennApp:
             if ''.join(self.current_guess) == self.phenn.answer:
                 self.correct_questions += 1
                 self.new_question()
-                print(self.get_state_str())
                 return
             # wrong answer
-            self.tries += 1
-            if self.tries == self.max_tries:
+            self.tries_remaining -= 1
+            if self.tries_remaining == 0:
                 self.new_question()
-                print(self.get_state_str())
                 return
-            print(self.get_state_str())
 
         if pyxel.btnp(pyxel.KEY_Z):
             # skip all tries
             self.new_question()
-            print(self.get_state_str())
             return
 
         if pyxel.btnp(pyxel.KEY_SPACE):
             # activate selector
             self.is_selected = not self.is_selected
-            print(self.get_state_str())
             return
 
         if pyxel.btnp(pyxel.KEY_LEFT):
             if self.current_select == 0:
-                print(self.get_state_str())
                 return
             if self.is_selected:
                 self.current_guess[self.current_select], self.current_guess[self.current_select - 1] = self.current_guess[self.current_select - 1], self.current_guess[self.current_select]
             self.current_select -= 1
-            print(self.get_state_str())
             return
 
         if pyxel.btnp(pyxel.KEY_RIGHT):
             if self.current_select == self.max_select:
-                print(self.get_state_str())
                 return
             if self.is_selected:
                 self.current_guess[self.current_select], self.current_guess[self.current_select + 1] = self.current_guess[self.current_select + 1], self.current_guess[self.current_select]  
@@ -101,13 +93,8 @@ class PomenohennApp:
         # draw selector
 
     def draw_intro(self):
-        pass
-
-    def get_state_str(self):
-        selector = f"tries:{self.tries},current_guess:{self.current_guess},is_selected:{self.is_selected},current_select:{self.current_select}"
-        questions = f"total_questions:{self.total_questions},correct_questions:{self.correct_questions}"
-        phenn = f"qn:{self.phenn.question},ans:{self.phenn.answer}"
-        return selector + questions + phenn
+        pyxel.cls(0)
+        pyxel.blt(0, 0, 0, 30, 30, 21, 10)
 
 if __name__ == "__main__":
     dictionary = "https://www.mit.edu/~ecprice/wordlist.10000"
