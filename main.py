@@ -1,4 +1,5 @@
 from app import Pomenohenn
+import rsc
 import pyxel
 
 class PomenohennApp:
@@ -94,6 +95,7 @@ class PomenohennApp:
 
     def draw_intro(self):
         pyxel.cls(0)
+        print('drawing')
         pyxel.blt(0, 0, 0, 30, 30, 21, 10)
 
 if __name__ == "__main__":
