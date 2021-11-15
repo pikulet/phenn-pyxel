@@ -1,24 +1,25 @@
 import random
 import requests
+from typing import Optional
+
 
 class Pomenohenn:
+    def __init__(self, dictionary: str, min_word_length: int, max_word_length: int):
+        self._all_words: set[int] = self.parse_dictionary(dictionary)
+        self._min_word_length: int = min_word_length
+        self._max_word_length: int = max_word_length
+        self._question: Optional[str] = None
+        self._answer: Optional[str] = None
 
-    def __init__(self, dictionary, min_word_length, max_word_length):
-        self._all_words = self.parse_dictionary(dictionary)
-        self._min_word_length = min_word_length
-        self._max_word_length = max_word_length
-        self._question = None
-        self._answer = None
-
-    def is_started(self):
+    def is_started(self) -> bool:
         return self._question is not None
 
-    def reset(self):
+    def reset(self) -> None:
         self._question = None
         self._answer = None
 
     @property
-    def question(self):
+    def question(self) -> str:
         return self._question
 
     @question.setter
@@ -29,7 +30,7 @@ class Pomenohenn:
     def answer(self):
         return self._answer
 
-    def generate_question(self):
+    def generate_question(self) -> None:
         word_len = 0
         while word_len < self._min_word_length or word_len > self._max_word_length:
             self._answer = random.choice(self._all_words)
