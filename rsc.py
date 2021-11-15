@@ -40,8 +40,8 @@ ltrs = {
     "v": PyxelImg(0, 120, 16, 16),
     "w": PyxelImg(16, 120, 16, 16),
     "x": PyxelImg(32, 120, 16, 16),
-    "y": PyxelImg(64, 120, 16, 16),
-    "z": PyxelImg(80, 120, 16, 16),
+    "y": PyxelImg(48, 120, 16, 16),
+    "z": PyxelImg(64, 120, 16, 16),
 }
 
 # qn no.
