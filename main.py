@@ -133,8 +133,9 @@ class PomenohennApp:
             self.draw_blt(
                 rsc.btn_enter,
                 self.get_moving_position(0.5 * self.width, drift=1),
-                0.75 * self.height,
+                0.7 * self.height,
             )
+            self.draw_blt(rsc.logo_gh, self.width - 30, self.height - 15)
             return
         elif self.state == PomenohennApp.State.Ending:
             if self.lives_remaining == 0:

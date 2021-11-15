@@ -64,3 +64,5 @@ mark_fail = PyxelImg(8, 168, 4, 4)
 
 life_full = PyxelImg(16, 168, 14, 12)
 life_empty = PyxelImg(32, 168, 14, 12)
+
+logo_gh = PyxelImg(40, 0, 43, 16)
