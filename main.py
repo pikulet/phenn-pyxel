@@ -43,7 +43,7 @@ class PomenohennApp:
         self.state: PomenohennApp.State = PomenohennApp.State.Intro
 
         pyxel.init(self.width, self.height, caption="Pomenohenn")
-        pyxel.load("rsc.pyxres")
+        pyxel.load("assets/rsc.pyxres")
         pyxel.run(self.update, self.draw)
 
     def new_question(self) -> None:
