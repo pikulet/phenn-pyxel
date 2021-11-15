@@ -8,15 +8,8 @@ class Pomenohenn:
         self._all_words: set[int] = self.parse_dictionary(dictionary)
         self._min_word_length: int = min_word_length
         self._max_word_length: int = max_word_length
-        self._question: Optional[str] = None
-        self._answer: Optional[str] = None
-
-    def is_started(self) -> bool:
-        return self._question is not None
-
-    def reset(self) -> None:
-        self._question = None
-        self._answer = None
+        self._question: str = None
+        self._answer: str = None
 
     @property
     def question(self) -> str:

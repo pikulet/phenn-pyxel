@@ -7,8 +7,8 @@ class PyxelImg:
 
 
 btn_enter = PyxelImg(0, 0, 29, 10)
-btn_skip = PyxelImg(0, 16, 25, 10)
-btn_move = PyxelImg(0, 32, 16, 16)
+btn_skip = PyxelImg(0, 16, 33, 10)
+btn_move = PyxelImg(0, 32, 42, 10)
 btn_select = PyxelImg(0, 48, 46, 10)
 
 # ui
@@ -57,3 +57,10 @@ qns = {
     9: PyxelImg(48, 152, 16, 16),
     10: PyxelImg(64, 152, 16, 16),
 }
+
+mark_neutral = PyxelImg(0, 168, 4, 4)
+mark_success = PyxelImg(4, 168, 4, 4)
+mark_fail = PyxelImg(8, 168, 4, 4)
+
+life_full = PyxelImg(16, 168, 14, 12)
+life_empty = PyxelImg(32, 168, 14, 12)
