@@ -5,4 +5,5 @@ pomenohenn but with a pyxel ui :)
 
 ### how to play?
 unscramble the letters correctly
+
 complete ten questions to win
