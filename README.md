@@ -5,7 +5,12 @@ pomenohenn but with a pyxel ui :)
  <img src="https://user-images.githubusercontent.com/24848927/141813387-09d0559d-7cf8-4c53-8b8a-b07df14d81e5.png" width="450">
 
 ### how to play?
-unscramble the letters correctly. complete ten questions to win!
+Unscramble the letters correctly. Complete ten questions to win!
 
 ### how to install?
-download `dist/pomenohenn.exe`
+Download `dist/pomenohenn.exe`
+
+**Building for other environments**
+You need to run `pip install` on `pyxel` and `pyinstaller`
+
+`pyxelpackager main.py`
